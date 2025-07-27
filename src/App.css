@@ -1,5 +1,25 @@
 @import "tailwindcss";
 
+.markdown-container{
+  padding: 16px;
+  font-size:14px;
+  height:100vh;
+  background-color:#1b1b1d;
+  overflow:auto
+}
+
+.markdown-container > pre {
+  background-color: #1b1b1dff !important;
+}
+
+.wmde-markdown {
+  background-color: #1b1b1d !important;
+  color: #FFF !important;
+}
+
+.wmde-markdown pre{
+ background-color: #000 !important;
+}
 
 .loader {
   position: absolute;
@@ -53,3 +73,5 @@
     transform: scale(1.2);
   }
 }
+
+

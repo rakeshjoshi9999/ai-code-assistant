@@ -11,9 +11,12 @@
   },
   "dependencies": {
     "@codemirror/lang-javascript": "^6.2.4",
+    "@langchain/core": "^0.3.66",
+    "@langchain/ollama": "^0.2.3",
     "@tailwindcss/vite": "^4.1.11",
     "@uiw/react-codemirror": "^4.24.1",
     "@uiw/react-markdown-preview": "^5.1.4",
+    "axios": "^1.11.0",
     "cors": "^2.8.5",
     "nodemon": "^3.1.10",
     "react": "^19.1.0",

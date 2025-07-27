@@ -6,7 +6,7 @@ import Editor from './components/Editor'
 import Review from './components/review'
 function App() {
   const [loader,setLoader] = useState<'idle' | 'loading' | 'loaded'>("idle");
-  const [review,setReview] = useState('# Code Review Here');
+  const [review,setReview] = useState('#### Review');
   const isLoading = loader === 'loading';
   const handleGenerateReview = async(code:string) =>{
     try{
@@ -16,7 +16,10 @@ function App() {
       headers:{
         'Content-Type':'application/json'
       },
-      body:JSON.stringify({code})
+      body:JSON.stringify({
+        model: 'codellama:7b',
+        code
+      })
     });
     const data = await response.json();
     setReview(data.review);
