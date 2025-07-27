@@ -4,9 +4,13 @@ import { useState } from 'react'
 import './App.css'
 import Editor from './components/Editor'
 import Review from './components/review'
+import Header from './components/header';
+
 function App() {
   const [loader,setLoader] = useState<'idle' | 'loading' | 'loaded'>("idle");
-  const [review,setReview] = useState('#### Review');
+  const [review,setReview] = useState(`#### Review
+                                        Add code and click on Generate Review to generate review
+    `);
   const isLoading = loader === 'loading';
   const handleGenerateReview = async(code:string) =>{
     try{
@@ -32,10 +36,15 @@ function App() {
 
   return (
     <>
-      <h1 className="h-full w-full flex overflow-hidden">
+    <div className="section">
+      <div className="header">
+        <Header />
+      </div>
+      <div className="h-full w-full flex overflow-hidden">
           <Editor loader={isLoading} onGenerateReview={handleGenerateReview} />
           <Review loader={isLoading} review={review}/>
-      </h1>
+      </div>
+    </div>
     </>
   )
 }
