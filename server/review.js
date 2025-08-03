@@ -4,7 +4,7 @@
 //   model: "codellama:7b",  // Default value.
 //   temperature:2
 // });
-import axios from 'axios';
+import axios from "axios";
 
 const prompt = `You are an expert front-end software engineer reviewing the code in an interview. You need to review and complete the tasks.
 
@@ -34,24 +34,18 @@ Key guidelines for your response:
 If no changes are needed, clearly state: "No improvements necessary."
 `;
 
-// async function generateReview(data){
-//     const result = await llm.invoke(
-//         ["system", prompt],
-//         ["human", data.code]
-//     );
-//     return result.content; 
-// }
-
 async function generateReview(data) {
-  const response = await axios.post('http://localhost:11434/api/generate', {
-    model: 'codellama:7b',
-    prompt: `${prompt}:\n\n${data.code}`,
-    stream: false,
-  });
+  const response = await axios.post(
+    "http://localhost:11434/api/generate",
+    {
+      model: "codellama:7b",
+      prompt: `${prompt}:\n\n${data.code}`,
+      stream: true,
+    },
+    { responseType: "stream" }
+  );
 
-  return response.data.response;
+  return response;
 }
 
-
 export default generateReview;
-
